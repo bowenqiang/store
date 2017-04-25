@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-3">
+
+    <section class="sidebar hidden-xs">
+      <div class="list-group">
+        <a href="#" class="list-group-item active">
+          Cras justo odio
+        </a>
+        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item">Morbi leo risus</a>
+        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item">Vestibulum at eros</a>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="col-md-9">
+    <section>
+      <label>Search:</label>
+      <input class="visible-xs-block visible-md-inline visible-lg-inline" ng-model="search.name" type="text" placeholder="Search by item name">
+
+    <br/>
+
+      <form name="addForm" ng-submit="addProduct()" novalidate>
+        <label>Add Item:</label>
+        <input class="visible-xs-block visible-md-inline visible-lg-inline" type="text" ng-model="item.name" placeholder="name" required>
+        <input class="visible-xs-block visible-md-inline visible-lg-inline" type="text" ng-model="item.description" placeholder="description" required>
+        <input class="visible-xs-block visible-md-inline visible-lg-inline" type="text" ng-model="item.price" placeholder="price" required>
+        <button ng-disabled="addForm.$invalid">Add</button>
+      </form>
+    </section>
+      <section class="productsView" ng-repeat="product in home.products | filter:search:strict">
+        <div class="well">
+          <div class="row" id="productsList">
+            <div class="col-sm-8 col-md-8">
+              <h3>{{product.name}}</h3>
+              <p>{{product.description}}</p>
+            </div>
+            <div class="col-sm-2 col-md-2">
+              <span class="label label-info">{{product.price}}</span>
+            </div>
+            <div class="col-sm-2 col-md-2">
+              <span class="glyphicon glyphicon-remove-sign" ng-click="deleteProduct($index)"></span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+  </div>
+
+
+</div>
